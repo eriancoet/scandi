@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import ProductCard from "../../components/ProductPageComponents/ProductCard/ProductCard";
-import { fetchCategoryProductsAPI } from "../../graphQL/api";
+import { fetchCategoryProductsAPI } from "../../api";
 import classes from "./ProductsList.module.css";
 
 const mapStateToProps = (state) => {
