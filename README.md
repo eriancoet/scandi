@@ -1,5 +1,4 @@
-# reactest
-##ScandiWeb React Test##
+# ScandiWeb React Test
 
 This is the React Test Project for Scandiweb. React developer Project.
 
