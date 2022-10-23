@@ -9,5 +9,5 @@ The backend uses GraphQL and front-end is created with React.js
 1. Install Yarn
 2. Run 'yarn start'
 
-###end of Readme.md###
+###end of Readme.md
 
