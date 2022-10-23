@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchCurrenciesAPI } from "../graphQL/api";
+import { fetchCurrenciesAPI } from "../api";
 
 export const fetchCurrencies = createAsyncThunk(
   "currencies/fetchCurrencies",

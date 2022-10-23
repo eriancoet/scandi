@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchProductAPI } from "../../graphQL/api";
+import { fetchProductAPI } from "../../api";
 import Layout from "../../hoc/Layout/Layout";
 import withRouter from "../../hoc/withRouter/withRouter";
 import classes from "./ProductPage.module.css";

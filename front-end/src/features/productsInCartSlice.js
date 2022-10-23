@@ -5,72 +5,82 @@ export const productsInCartSlice = createSlice({
   initialState: [],
   reducers: {
     addProductToCart: (state, action) => {
-      if (!action.payload.inStock) {
+      const { id, inStock, selectedAttr } = action.payload;
+
+      if (!inStock) {
         return [...state];
       }
-      const id = action.payload.id;
-      const selectedAttr = action.payload.selectedAttr;
-      const idx = state.findIndex(
+
+      const productIndex = state.findIndex(
         (product) =>
           product.id === id &&
           JSON.stringify(product.selectedAttr) === JSON.stringify(selectedAttr)
       );
-      if (idx !== -1) {
-        state[idx].amount += 1;
+
+      if (productIndex !== -1) {
+        state[productIndex].amount += 1;
         return state;
-      } else {
-        return [
-          ...state,
-          {
-            cartId: `${id}-${Math.floor(Math.random() * 1000000)}`,
-            ...action.payload,
-            amount: 1,
-          },
-        ];
       }
+
+      return [
+        ...state,
+        {
+          cartId: `${id}-${Math.floor(Math.random() * 1000000)}`,
+          ...action.payload,
+          amount: 1,
+        },
+      ];
+
     },
 
     modifyProductInCart: (state, action) => {
-      const cartId = action.payload.cartId;
-      const idx = state.findIndex((obj) => obj.cartId === cartId);
-      if (idx === -1) {
+      const { cartId, attributes } = action.payload;
+
+      const productIndex = state.findIndex((obj) => obj.cartId === cartId);
+      if (productIndex === -1) {
         return state;
       }
-      const product = state[idx];
-      Object.keys(action.payload.attributes).forEach((key) => {
-        product.selectedAttr[key] = action.payload.attributes[key];
+      const product = state[productIndex];
+      Object.keys(attributes).forEach((key) => {
+        product.selectedAttr[key] = attributes[key];
       });
-      const idx2 = state.findIndex(
+
+      const SecondProductIndex = state.findIndex(
         (obj) =>
           obj.id === product.id &&
           obj.cartId !== product.cartId &&
           JSON.stringify(obj.selectedAttr) ===
-            JSON.stringify(product.selectedAttr)
+          JSON.stringify(product.selectedAttr)
       );
-      if (idx2 === -1) {
-        state[idx] = { ...product };
+
+      if (SecondProductIndex === -1) {
+        state[productIndex] = { ...product };
       } else {
-        state[idx2].amount += product.amount;
-        state.splice(idx, 1);
+        state[SecondProductIndex].amount += product.amount;
+        state.splice(productIndex, 1);
       }
+
       return state;
     },
 
     addOneToProduct: (state, action) => {
       const cartId = action.payload.cartId;
-      const idx = state.findIndex((obj) => obj.cartId === cartId);
-      if (idx !== -1) {
-        state[idx].amount += 1;
+      const productIndex = state.findIndex((obj) => obj.cartId === cartId);
+
+      if (productIndex !== -1) {
+        state[productIndex].amount += 1;
       }
+
       return state;
     },
+
     subtractOneFromProduct: (state, action) => {
       const cartId = action.payload.cartId;
-      const idx = state.findIndex((obj) => obj.cartId === cartId);
-      if (state[idx].amount === 1) {
-        state.splice(idx, 1);
+      const productIndex = state.findIndex((obj) => obj.cartId === cartId);
+      if (state[productIndex].amount === 1) {
+        state.splice(productIndex, 1);
       } else {
-        state[idx].amount -= 1;
+        state[productIndex].amount -= 1;
       }
       return state;
     },
