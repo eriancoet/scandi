@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./ProductCard.module.css";
-import { FiShoppingCart, FiCheck } from "react-icons/fi";
+import { FiShoppingCart} from "react-icons/fi";
 import { CSSTransition } from "react-transition-group";
 import { Navigate } from "react-router-dom";
 import "./transitions.css";

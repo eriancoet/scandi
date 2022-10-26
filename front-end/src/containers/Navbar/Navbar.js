@@ -2,7 +2,7 @@ import React from "react";
 import CurrenciesDropMenu from "../../components/NavbarComponents/CurrenciesDropMenu/CurrenciesDropMenu";
 import NavbarCategories from "../../components/NavbarComponents/NavbarCategories/NavbarCategories";
 import classes from "./Navbar.module.css";
-import { Link } from "react-router-dom";
+import Logo from "./Logo/Logo.component.js";
 import ShoppingCart from "../../components/NavbarComponents/ShoppingCart/ShoppingCart";
 import { isMobile } from "react-device-detect";
 import { HiMenuAlt2 } from "react-icons/hi";
@@ -39,9 +39,10 @@ class Navbar extends React.Component {
         {this.state.showCategoriesMobileMenu && (
           <NavbarCategoriesMobile close={this.closeCategoriesMobileMenu} />
         )}
-        <Link className={classes.logo} to="/">
-          <img src="/images/logo.png" alt="logo" className={classes.logo} />
-        </Link>
+        <div className={classes.center}>  
+           <Logo />
+        </div>
+     
         <div className={classes.rightSide}>
           <CurrenciesDropMenu />
           <ShoppingCart />

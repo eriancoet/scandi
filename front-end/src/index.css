@@ -15,20 +15,6 @@
   --c-info-variant: #b4d2f4;
 }
 
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-  background-color: #fff;
-}
-
-::-webkit-scrollbar {
-  width: 12px;
-  background-color: #fff;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: var(--c-black);
-}
 
 body {
   margin: 0;

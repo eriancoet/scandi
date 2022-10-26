@@ -45,13 +45,33 @@ class ShoppingCart extends React.Component {
       this.setNumProducts();
     }
   }
+  handleClickIcon = (event) => {
+    if (
+      this.iconRef.current.contains(event.target)
+    ) {
+      this.closeMiniCart();
+    }
+  };
 
   clickHandler = (e) => {
     e.preventDefault();
     e.stopPropagation();
     if (!this.state.showOverlay) {
       this.setState({ ...this.state, showOverlay: true });
+    } else  {
+      this.setState({ ...this.state, showOverlay: false });
+      setTimeout(() => {
+        this.props.closeMiniCart();
+      }, 500);
+   
     }
+  };
+
+  closeMiniCart = () => {
+    this.setState({ ...this.state, show: false });
+    setTimeout(() => {
+      this.props.closeMiniCart();
+    }, 500);
   };
 
   hideOverlayHandler = () => {

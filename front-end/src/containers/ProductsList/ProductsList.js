@@ -61,7 +61,7 @@ class ProductsList extends React.Component {
     return (
       <div className={classes.ProductsListContainer}>
         <h1 className={classes.categoryName}>
-          Category: {this.state.category}
+         {this.state.category}
         </h1>
         <div className={classes.ProductsList}>
           {this.state.currency.label &&

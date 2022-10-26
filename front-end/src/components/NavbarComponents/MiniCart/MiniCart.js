@@ -44,13 +44,13 @@ class MiniCart extends React.Component {
 
   handleClickOutside = (event) => {
     if (
-      // !this.cartRef.current.contains(event.target) &&
-      // !this.props.cartIconRef.current.contains(event.target)
       this.overlayRef.current.contains(event.target)
     ) {
       this.closeMiniCart();
     }
   };
+
+  
 
   componentDidUpdate(prevProps) {
     if (prevProps.products !== this.props.products) {
@@ -86,7 +86,7 @@ class MiniCart extends React.Component {
     this.setState({ ...this.state, show: false });
     setTimeout(() => {
       this.props.closeMiniCart();
-    }, 450);
+    }, 500);
   };
 
   render() {
@@ -100,9 +100,8 @@ class MiniCart extends React.Component {
           <div className={classes.MiniCart} ref={this.cartRef}>
             <div className={classes.header}>
               <p className={classes.title}>
-                <span>My Bag, </span>
-                {this.calcNumProductInBag()}{" "}
-                {this.props.products.length === 1 ? "item" : "items"}
+                <span>CART</span>
+                
               </p>
               <div className={classes.xIcon} onClick={this.closeMiniCart}>
                 <IoCloseOutline />
@@ -120,8 +119,14 @@ class MiniCart extends React.Component {
                   ))}
                 </div>
                 <div className={classes.footer}>
+                <p className={classes.Quantity}>
+                Quantity: 
+                {this.calcNumProductInBag()}{" "}
+                {this.props.products.length === 1 ? " " : " "}
+              </p>
                   <div className={classes.totalPrice}>
-                    <p>Total</p>
+               
+                    <p>Total: </p>
                     <p>
                       {this.state.currency.symbol}
                       {this.calcTotalPrice()}
@@ -129,13 +134,13 @@ class MiniCart extends React.Component {
                   </div>
                   <div className={classes.btnsContainer}>
                     <Link to="/cart" onClick={this.props.closeMiniCart}>
-                      <button className={classes.viewBagBtn}>View Bag</button>
+                    
                     </Link>
                     <button
                       className={classes.checkoutBtn}
                       onClick={this.props.closeMiniCart}
                     >
-                      Check out
+                      Order
                     </button>
                   </div>
                 </div>
@@ -143,7 +148,7 @@ class MiniCart extends React.Component {
             ) : (
               <div className={classes.noProducts}>
                 <img src="/images/empty_box.svg" alt="empty" />
-                <p>Your bag is empty.</p>
+                <p>Cart is empty.</p>
               </div>
             )}
           </div>

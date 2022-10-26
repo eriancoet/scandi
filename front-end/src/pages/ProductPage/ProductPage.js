@@ -99,7 +99,7 @@ class ProductPage extends React.Component {
       if (idx === -1) {
         const notSelectedAttr = {};
         this.state.product.attributes.forEach((attr) => {
-          notSelectedAttr[attr.id] = false;
+          notSelectedAttr[attr.id] = true;
         });
         this.setState({
           ...this.state,

@@ -74,7 +74,7 @@ class CartPage extends React.Component {
           ) : (
             <div className={classes.noProducts}>
               <img src="/images/empty_box.svg" alt="empty" />
-              <p>Your bag is empty.</p>
+              <p>Cart is Empty.</p>
               <Link to="/">
                 <button>Browse Products</button>
               </Link>
