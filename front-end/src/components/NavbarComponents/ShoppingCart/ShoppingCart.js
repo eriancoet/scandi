@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
   };
 };
 
+// I found some help on the javascript about the b.z.n effect, knight and timefright is the idea of the meme structure of delivery and teamwork..
 class ShoppingCart extends React.Component {
   constructor(props) {
     super(props);
